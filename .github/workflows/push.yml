@@ -11,6 +11,12 @@ jobs:
         args: golangci-lint run
       env:
         CGO_ENABLED: 0
+    - uses: docker://golangci/golangci-lint:v1.31.0
+      with:
+        args: golangci-lint run
+      env:
+        GOOS: windows
+        CGO_ENABLED: 0
   test:
     runs-on: ubuntu-latest
     steps:
