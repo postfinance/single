@@ -12,21 +12,18 @@ jobs:
       env:
         CGO_ENABLED: 0
   test:
-    strategy:
-      matrix:
-        go-version: [1.15]
-        os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-go@v1
       with:
-        go-version: 1.15
+        go-version: 1.14
     - name: Run Unit tests
-      run: go test -covermode atomic -coverprofile=profile.cov $(go list -m)/...
+      run: go test -covermode atomic -coverprofile=profile.cov ./...
     - name: Send coverage
       env:
         COVERALLS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         GO111MODULE=off go get github.com/mattn/goveralls
         $(go env GOPATH)/bin/goveralls -coverprofile=profile.cov -service=github
+
