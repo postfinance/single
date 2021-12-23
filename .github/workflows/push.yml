@@ -33,7 +33,7 @@ jobs:
         COVERALLS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         GO111MODULE=off go get github.com/mattn/goveralls
-        $(go env GOPATH)/bin/goveralls -debug -coverprofile=profile.cov -service=github
+        $(go env GOPATH)/bin/goveralls -coverprofile=profile.cov -service=github
   test:
     strategy:
       matrix:
