@@ -3,7 +3,10 @@
 [![Build Status](https://github.com/postfinance/single/workflows/build/badge.svg)](https://github.com/postfinance/single/actions)
 [![GoDoc](https://godoc.org/github.com/postfinance/single?status.svg)](https://godoc.org/github.com/postfinance/single)
 
-# single
+# Single
 
-single ensures that only one instance of your program is running
+Single ensures that only one instance of your program is running
 
+# Usage
+
+Use a persistent `*Single` object for the duration of your program, or Go's garbage collector will automatically close the lockfile. 
